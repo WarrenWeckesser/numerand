@@ -5,9 +5,9 @@ More random distributions for NumPy.
 
 ``numerand`` has functions for:
 
-* [generating random contingency tables](#Random_contingency_tables)
+* [generating random contingency tables](#Random-contingency-tables)
 * [selecting random elements from a sequence, with
-  or without replacement](#Random_selection_of_elements_from_a_sequence)
+  or without replacement](#Random-selection-of-elements-from-a-sequence)
 
 # Random contingency tables
 
