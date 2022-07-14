@@ -23,6 +23,13 @@ The function `random_table(*sums, size=None, rng=None)` accepts the
 quantities associated with the levels of each categorical variable
 (i.e. the marginal sums for each variable).
 
+*Note.* The method used to generate a random table is simple but slow.
+Let ``m`` be the number of dimensions of ``table``, and let ``N``
+be the sum of the elements in the table.  Both the time and space
+complexities of the algorithm to generate one sample are O(``m*N``).
+There is a lot of literature on the efficient generation of random
+contingency tables that has been completely ignored here!
+
 Examples
 --------
 
