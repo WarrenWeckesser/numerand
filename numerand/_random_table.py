@@ -78,7 +78,7 @@ def _fast_crosstab(data, maxes, maxprod, coeffs):
     return np.bincount(z, minlength=maxprod).reshape(maxes)
 
 
-def random_table_from_table(table, *, size=None, rng=None):
+def random_table_from_table(table, *, size=None, method=None, rng=None):
     """
     Generate a random contingency table.
 
@@ -89,7 +89,14 @@ def random_table_from_table(table, *, size=None, rng=None):
     an array with shape ``(size,) + table.shape`` is returned, containing
     ``size`` random tables.
 
-    The method used to generate the random table is simple but slow.
+    If `table` has shape (2, 2), the random table can be generated based
+    on the hypergeometric distribution, with sampling computed by the
+    method ``rng.hypergeometric``.  This method is used if `table` has
+    shape (2, 2) and `method` is either None or `'hypergeometric'`.
+    Otherwise, the method used to generate the random table is to generate
+    a dataset with the appropriate numbers of each level in each category,
+    shuffle the data associated with each variable independently and then
+    count the occurrences of the levels.  This method is simple but slow.
     Let ``m`` be the number of dimensions of ``table``, and let ``N``
     be the sum of the elements in the table.  Both the time and space
     complexities of the algorithm to generate one sample are O(``m*N``).
@@ -98,6 +105,16 @@ def random_table_from_table(table, *, size=None, rng=None):
     contingency tables that has been completely ignored here!
     """
     table = np.asarray(table)
+
+    if table.shape == (2, 2) and method in [None, 'hypergeometric']:
+        # This is also handled in random_table(), but we can avoid a
+        # bit of overhead by doing the simple calculation here.
+        if rng is None:
+            rng = np.random.default_rng()
+        a, b, c, d = table.ravel()
+        u = rng.hypergeometric(a + b, c + d, a + c, size=size)
+        return table + np.multiply.outer(u - a, np.array([[1, -1], [-1, 1]]))
+
     ndim = table.ndim
     axes = set(range(ndim))
     sums = []
@@ -109,7 +126,7 @@ def random_table_from_table(table, *, size=None, rng=None):
     return random_table(*sums, size=size, rng=rng)
 
 
-def random_table(*sums, size=None, rng=None):
+def random_table(*sums, size=None, method=None, rng=None):
     """
     Generate a random contingency table.
 
@@ -131,11 +148,18 @@ def random_table(*sums, size=None, rng=None):
     an array with shape ``(size,) + table.shape`` is returned, containing
     ``size`` random tables.
 
-    The method used to generate the random table is simple but slow. Let
-    ``m`` be the number of variables (i.e. ``m = len(sums)``), and let
-    ``N`` be the sum of the elements in the table (so ``N = sum(sums[0])``).
+    If the table to be generated has shape (2, 2), it can be generated
+    based on the hypergeometric distribution, with sampling computed by
+    the method ``rng.hypergeometric``.  This method is used if ``len(sums)``
+    is 2, each element of ``sums`` has length 2, and `method` is either
+    None or `'hypergeometric'`.  Otherwise, the method used to generate the
+    random table is to generate a dataset with the appropriate numbers of
+    each level in each category, shuffle the data associated with each
+    variable independently and then count the occurrences of the levels.
+    This method is simple but slow.  Let ``m`` be the number of dimensions
+    of ``table``, and let ``N`` be the sum of the elements in the table.
     Both the time and space complexities of the algorithm to generate one
-    random table are O(``m*N``).
+    sample are O(``m*N``).
 
     There is a lot of literature on the efficient generation of random
     contingency tables that has been completely ignored here!
@@ -177,15 +201,27 @@ def random_table(*sums, size=None, rng=None):
         if s.sum() != N:
             raise ValueError('All the input sequences must have the same sum.')
 
+    if rng is None:
+        rng = np.random.default_rng()
+
     ndim = len(sums)
     if ndim == 2:
-        return _random_2d_table_from_marginals(sums[0], sums[1],
-                                               size=size, rng=rng)
+        if (len(sums[0]) == 2 and len(sums[1]) == 2
+                and method in [None, 'hypergeometric']):
+            # Use rng.hypergeometric
+            ab = sums[0][0]
+            cd = sums[0][1]
+            ac = sums[1][0]
+            u = rng.hypergeometric(ab, cd, ac, size=size)
+            base_table = np.array([[0, ab], [ac, cd - ac]])
+            signs = np.array([[1, -1], [-1, 1]])
+            return base_table + np.multiply.outer(u, signs)
+        else:
+            return _random_2d_table_from_marginals(sums[0], sums[1],
+                                                   size=size, rng=rng)
 
     table_shape = tuple(len(s) for s in sums)
 
-    if rng is None:
-        rng = np.random.default_rng()
     if hasattr(rng, 'permuted'):
 
         def rowshuffle(data):
