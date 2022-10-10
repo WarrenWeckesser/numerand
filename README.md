@@ -8,7 +8,7 @@ More random distributions for NumPy.
 * [generating random contingency tables](#Random-contingency-tables)
 * [selecting random elements from a sequence, with
   or without replacement](#Random-selection-of-elements-from-a-sequence)
-* [drawing sample uniformly from within a triangle](#Random-sample-from-a-triangle)
+* [drawing samples uniformly from within a triangle](#Random-sample-from-a-triangle)
 
 # Random contingency tables
 
