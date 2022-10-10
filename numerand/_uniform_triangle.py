@@ -37,8 +37,9 @@ def uniform_triangle(vertices, size=None, rng=None):
     else:
         nvars = size
 
-    x = 1 - np.sqrt(rng.uniform(size=(nvars, 1)))
-    y = rng.uniform(0, 1 - x)
+    s = np.sqrt(rng.uniform(size=(nvars, 1)))
+    x = 1 - s
+    y = rng.uniform(0, s)
     v01 = vertices[1] - vertices[0]
     v02 = vertices[2] - vertices[0]
     sample = vertices[0] + x*v01 + y*v02

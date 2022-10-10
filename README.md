@@ -253,7 +253,8 @@ defined by the vertices (0, 1), (2, 1) and (2, 0):
            [0.98366606, 0.55682981],
            [1.64895797, 0.3444503 ]])
 
-The script `uniform_triangle_example.py` in the `examples`
-directory generates the following plot:
+The script `uniform_triangle_example.py` in the `examples` directory
+generates the following plot, showing samples drawn from the triangle
+with vertices (0, 1), (4, 2) and (10, -2):
 
 ![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_triangle_example.png)
