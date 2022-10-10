@@ -8,7 +8,7 @@ More random distributions for NumPy.
 * [generating random contingency tables](#Random-contingency-tables)
 * [selecting random elements from a sequence, with
   or without replacement](#Random-selection-of-elements-from-a-sequence)
-* [drawing samples uniformly from within a triangle](#Random-sample-from-a-triangle)
+* [drawing samples uniformly from within a simplex](#Random-sample-from-a-simplex)
 
 # Random contingency tables
 
@@ -225,10 +225,10 @@ following call is (2, 3).
            [30, 20, 40]])
 
 
-# Random sample from a triangle
+# Random sample from a simplex
 
-The function `numerand.uniform_triangle` draws samples uniformly
-from a triangle in n-dimensional space.
+The function `numerand.uniform_simplex` draws samples uniformly
+from a simplex defined by m points in (m-1)-dimensional space.
 
 Examples
 --------
@@ -238,20 +238,20 @@ defined by the vertices (0, 1), (2, 1) and (2, 0):
     >>> vertices = [[0, 1], [2, 1], [2, 0]]
     >>> rng = np.random.default_rng(0x1ce1cebab1e)
 
-    >>> uniform_triangle(vertices, rng=rng)
-    array([0.68399716, 0.8266739 ])
+    >>> uniform_simplex(vertices, rng=rng)
+    array([[0.45603819, 0.97739759]])
 
-    >>> uniform_triangle(vertices, size=10, rng=rng) 
-    array([[1.67560231, 0.96280636],
-           [0.69376262, 0.84709901],
-           [1.89031621, 0.86163761],
-           [1.24682569, 0.57138261],
-           [1.00292725, 0.75387374],
-           [1.74429715, 0.25012723],
-           [0.43734005, 0.89222254],
-           [1.23044604, 0.4342023 ],
-           [0.98366606, 0.55682981],
-           [1.64895797, 0.3444503 ]])
+    >>> uniform_simplex(vertices, size=10, rng=rng)
+    array([[1.182581  , 0.44657075],
+           [1.71729835, 0.64729082],
+           [1.24208672, 0.69514418],
+           [0.97614558, 0.81823133],
+           [1.04352278, 0.7884412 ],
+           [1.96797764, 0.37287994],
+           [0.93551874, 0.88052088],
+           [1.83195191, 0.37644599],
+           [1.49138845, 0.32518159],
+           [1.3231986 , 0.36513923]])
 
 The script `uniform_triangle_example.py` in the `examples` directory
 generates the following plot, showing samples drawn from the triangle

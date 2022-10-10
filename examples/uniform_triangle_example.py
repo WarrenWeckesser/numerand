@@ -1,12 +1,12 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from numerand import uniform_triangle
+from numerand import uniform_simplex
 
 
 rng = np.random.default_rng(3486780953123987)
 vertices = np.array([[0, 1], [4, 2], [10, -2]])
 
-pts = uniform_triangle(vertices, size=4000, rng=rng)
+pts = uniform_simplex(vertices, size=4000, rng=rng)
 
 fig, ax = plt.subplots()
 ax.plot(pts[:, 0], pts[:, 1], '.',
