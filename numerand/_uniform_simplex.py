@@ -33,10 +33,5 @@ def uniform_simplex(vertices, size=None, rng=None):
     if rng is None:
         rng = np.random.default_rng()
 
-    if size is None:
-        nvars = 1
-    else:
-        nvars = size
-
-    p = rng.dirichlet(np.ones(m), size=nvars)
+    p = rng.dirichlet(np.ones(m), size=size)
     return p @ vertices
