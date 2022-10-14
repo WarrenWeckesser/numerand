@@ -260,6 +260,12 @@ with vertices (0, 1), (4, 2) and (10, -2):
 
 ![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_triangle_example.png)
 
+The script `uniform_tetrahedron_example.py`, also in the `examples` directory,
+generates the following plot, showing samples drawn from the tetrahedron
+with vertices (0, 0, 0), (4, 0, 4), (2, 3, 4) and (5, 2, 1):
+
+![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_tetrahedron_example.png)
+
 
 # Random spaced samples
 
