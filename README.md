@@ -9,6 +9,7 @@ More random distributions for NumPy.
 * [selecting random elements from a sequence, with
   or without replacement](#Random-selection-of-elements-from-a-sequence)
 * [drawing samples uniformly from within a simplex](#Random-sample-from-a-simplex)
+* [random samples from an interval with minimum spacing](#Random-spaced-samples)
 
 # Random contingency tables
 
@@ -258,3 +259,16 @@ generates the following plot, showing samples drawn from the triangle
 with vertices (0, 1), (4, 2) and (10, -2):
 
 ![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_triangle_example.png)
+
+
+# Random spaced samples
+
+The function `numerand.random_spaced(low, high, delta, n, size)` generates n
+samples from the interval [low, high] such the spacing between samples is
+at least delta.  (The samples are sorted; shuffle them after they are generated
+if that is required.)
+
+The script `random_spaced_demo.py` in the `examples` directory generates the
+following plot.
+
+![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/random_spaced_demo.png)
