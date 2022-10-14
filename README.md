@@ -263,10 +263,10 @@ with vertices (0, 1), (4, 2) and (10, -2):
 
 # Random spaced samples
 
-The function `numerand.random_spaced(low, high, delta, n, size)` generates n
-samples from the interval [low, high] such the spacing between samples is
-at least delta.  (The samples are sorted; shuffle them after they are generated
-if that is required.)
+The function `numerand.random_spaced(low, high, delta, n, size=None, rng=None)`
+generates n numbers from the interval [low, high] such the spacing between each
+pair of numbers is at least delta.  (The samples are sorted; shuffle them after
+they are generated if that is required.)
 
 The script `random_spaced_demo.py` in the `examples` directory generates the
 following plot.

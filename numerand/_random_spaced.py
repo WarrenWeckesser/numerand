@@ -23,7 +23,7 @@ def random_spaced(low, high, delta, n, size=None, rng=None):
     >>> from numerand import random_spaced
 
     >>> rng = np.random.default_rng(0x1ce1cebab1e)
-    >>> x = random_spaced(0, 1, 0.2, 3, size=10, rng=rng)
+    >>> x = random_spaced(0, 1, 0.2, n=3, size=10, rng=rng)
     >>> x
     array([[0.02385442, 0.3250959 , 0.81466327],
            [0.02239674, 0.58901262, 0.78980063],
