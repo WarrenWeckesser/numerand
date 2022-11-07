@@ -8,8 +8,8 @@ More random distributions for NumPy.
 * [generating random contingency tables](#Random-contingency-tables)
 * [selecting random elements from a sequence, with
   or without replacement](#Random-selection-of-elements-from-a-sequence)
-* [drawing samples uniformly from within a simplex](#Random-sample-from-a-simplex)
-* [drawing samples uniformly from with the union of simplices](#Random-sample-from-simplices)
+* [drawing samples uniformly from a simplex](#Random-sample-from-a-simplex)
+* [drawing samples uniformly from the union of simplices](#Random-sample-from-simplices)
 * [random samples from an interval with minimum spacing](#Random-spaced-samples)
 
 # Random contingency tables
