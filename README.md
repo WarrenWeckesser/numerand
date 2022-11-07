@@ -9,6 +9,7 @@ More random distributions for NumPy.
 * [selecting random elements from a sequence, with
   or without replacement](#Random-selection-of-elements-from-a-sequence)
 * [drawing samples uniformly from within a simplex](#Random-sample-from-a-simplex)
+* [drawing samples uniformly from with the union of simplices](#Random-sample-from-simplices)
 * [random samples from an interval with minimum spacing](#Random-spaced-samples)
 
 # Random contingency tables
@@ -265,6 +266,23 @@ generates the following plot, showing samples drawn from the tetrahedron
 with vertices (0, 0, 0), (4, 0, 4), (2, 3, 4) and (5, 2, 1):
 
 ![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_tetrahedron_example.png)
+
+
+# Random sample from simplices
+
+The function `numerand.uniform_simplices` draws samples uniformly
+from the union of a set of simplices.
+
+The script `uniform_triangles.py` in the `examples` directory
+generates the following plot:
+
+![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_triangles.png)
+
+The script `uniform_3d_simplices.py`, also in the `examples` directory,
+shows the result of sampling uniformly from a polyhedron in 3D.  It generates
+the following plot:
+
+![](https://github.com/WarrenWeckesser/numerand/blob/main/examples/uniform_3d_simplices.png)
 
 
 # Random spaced samples
