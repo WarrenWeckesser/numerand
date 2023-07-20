@@ -5,12 +5,12 @@ More random distributions for NumPy.
 
 ``numerand`` has functions for:
 
-* [generating random contingency tables](#Random-contingency-tables)
+* [generating random contingency tables](#random-contingency-tables)
 * [selecting random elements from a sequence, with
-  or without replacement](#Random-selection-of-elements-from-a-sequence)
-* [drawing samples uniformly from a simplex](#Random-sample-from-a-simplex)
-* [drawing samples uniformly from the union of simplices](#Random-sample-from-simplices)
-* [random samples from an interval with minimum spacing](#Random-spaced-samples)
+  or without replacement](#random-selection-of-elements-from-a-sequence)
+* [drawing samples uniformly from a simplex](#random-sample-from-a-simplex)
+* [drawing samples uniformly from the union of simplices](#random-sample-from-simplices)
+* [random samples from an interval with minimum spacing](#random-spaced-samples)
 
 # Random contingency tables
 
