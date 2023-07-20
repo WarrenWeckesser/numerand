@@ -178,6 +178,11 @@ Verify that the margins have the required sums.
 of the NumPy ``random`` module.  The function allows for sampling with
 or without replacement.  The API allows the operation of drawing ``nsample``
 items without replacement to be repeated multiple times in a single call.
+See, for example, these questions on stackoverflow for examples of
+interest in this capability:
+
+* [https://stackoverflow.com/questions/72076229/numpy-multiple-random-choice](https://stackoverflow.com/questions/72076229/numpy-multiple-random-choice)
+* [numpy take many samples with no replacement by row](https://stackoverflow.com/questions/53891169/numpy-take-many-samples-with-no-replacement-by-row)
 
 The implementation of ``numerand.select`` is currently just a proof of
 concept for the API.  It works, but some of the calls are implemented
