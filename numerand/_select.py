@@ -126,15 +126,14 @@ def select(items, *, nsample=None, p=None, size=None, rng=None):
         raise ValueError('nsample must be nonnegative.')
     if nsample > len(items):
         raise ValueError(f'nsample ({nsample}) must not exceed '
-                         F'len(items) ({len(items)})')
+                         f'len(items) ({len(items)})')
 
     if size is None:
         size = ()
     elif np.isscalar(size):
         size = (size,)
 
-    # FIXME: check that this product doesn't overflow.
-    if np.prod(size, dtype=np.intp) > 0:
+    if all(s != 0 for s in size):
 
         def func(_):
             return rng.choice(items, size=nsample, p=p, replace=False)
