@@ -188,6 +188,12 @@ interest in this capability:
 * [numpy choose without replacement along specific dimension](https://stackoverflow.com/questions/40002821/numpy-choose-without-replacement-along-specific-dimension)
 * [efficiently draw random samples without replacement from an array in python](https://stackoverflow.com/questions/79295206/efficiently-draw-random-samples-without-replacement-from-an-array-in-python)
 
+See my comments in the numpy mailing list thread
+
+https://mail.python.org/archives/list/numpy-discussion@python.org/thread/7TNETLSEN63LTZLP6IVGQZQR555M3GDE/#WASHPMLJSDW5EAUCATI6FVALMZZ74CFY
+
+for a related discussion.
+
 The implementation of ``numerand.select`` is currently just a proof of
 concept for the API.  It works, but some of the calls are implemented
 as Python loops, and so will be slow.
