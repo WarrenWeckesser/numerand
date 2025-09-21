@@ -5,15 +5,18 @@
 import numpy as np
 
 
-def random_spaced(low, high, delta, n, size=None, rng=None):
+def random_spaced(low, high, *, delta, n, size=None, rng=None):
     """
     Choose n random values between low and high, with minimum spacing delta.
 
-    If size is None, one sample is returned.
-    Set size=m (an integer) to return m samples.
+    This is a multivariate distribution.  Each variate is a 1-d array of
+    length n.
 
-    The values in each sample returned by random_spaced are in increasing
-    order.
+    If size is None, one variate is returned. Set size=m (an integer) to
+    return m variates.  In that case the array returned has shape (m, n).
+
+    The values in each variate returned by random_spaced are in increasing
+    order.  Shuffle the variate if an unordered result is desired.
 
     The marginal distribution of each component is a beta distribution.
 
@@ -23,7 +26,7 @@ def random_spaced(low, high, delta, n, size=None, rng=None):
     >>> from numerand import random_spaced
 
     >>> rng = np.random.default_rng(0x1ce1cebab1e)
-    >>> x = random_spaced(0, 1, 0.2, n=3, size=10, rng=rng)
+    >>> x = random_spaced(0, 1, delta=0.2, n=3, size=10, rng=rng)
     >>> x
     array([[0.02385442, 0.3250959 , 0.81466327],
            [0.02239674, 0.58901262, 0.78980063],
@@ -47,9 +50,9 @@ def random_spaced(low, high, delta, n, size=None, rng=None):
 
     space = high - low - (n-1)*delta
     if space < 0:
-        raise ValueError(f"It is not possible to select {n} points from the "
-                         f"interval {[low, high]} with minimum spacing "
-                         f"{delta}.")
+        msg = (f"It is not possible to select {n} points from the interval "
+               f"{[low, high]} with minimum spacing {delta}.")
+        raise ValueError(msg)
 
     if size is None:
         u = rng.random(n)

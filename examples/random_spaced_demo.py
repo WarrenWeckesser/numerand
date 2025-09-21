@@ -10,20 +10,21 @@ from scipy.stats import beta
 import matplotlib.pyplot as plt
 from numerand import random_spaced
 
+
 low = 0
 high = 100
 delta = 10
 n = 5
 size = 50000
-s = random_spaced(low, high, delta, n=n, size=size)
+s = random_spaced(low, high, delta=delta, n=n, size=size)
 
 fig, ax = plt.subplots()
 
 for k in range(s.shape[1]):
     ax.hist(s[:, k], bins=100, density=True, alpha=0.3)
-ax.set_title(f"Normalized histograms for components of\n"
-             f"random_spaced(low={low}, high={high}, delta={delta}, "
-             f"n={n}, size={size})")
+title = (f"Normalized histograms for components of\n"
+         f"random_spaced(low={low}, high={high}, delta={delta}, n={n}, size={size})")
+ax.set_title(title)
 ax.grid(alpha=0.2)
 
 # Plot the PDFs of the marginal distributions of each component.
