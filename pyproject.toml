@@ -1,0 +1,37 @@
+[project]
+name = "numerand"
+version = "0.0.1.dev9"
+# TO DO: Determine version bounds for the dependencies.
+dependencies = [
+    "numpy",
+]
+description = "More random distributions for NumPy."
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+  {name = 'Warren Weckesser', email = 'warren.weckesser+numerand@gmail.com'},
+]
+keywords = ['random', 'numpy']
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Software Development :: Libraries",
+    "Topic :: Scientific/Engineering",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/WarrenWeckesser/numerand"
+"Bug Tracker" = "https://github.com/WarrenWeckesser/numerand/issues"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
